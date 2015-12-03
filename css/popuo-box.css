@@ -1,48 +1,14 @@
 /* Styles for dialog window */
-#small-dialog,#small-dialog1{
-	padding:20px;
-	text-align: left;
-	max-width: 650px;
-	margin: 40px auto;
-	position: relative;
-	text-align:center;
-}
-#small-dialog-it,#small-dialog-in,#small-dialog-fr,#small-dialog-sh,#small-dialog-sf,#small-dialog-su,#small-dialog-me,#small-dialog-ch,#small-dialog-pi,#small-dialog-am {
+#small-dialog,#small-dialog1,#small-dialog2,#small-dialog3,#small-dialog4,#small-dialog5 ,#small-dialog6,#small-dialog7,#small-dialog8,#small-dialog9{
 	background: white;
-	padding:20px;
+	padding:12px;
 	text-align: left;
-	max-width: 450px;
-	margin: 40px auto;
+	max-width: 600px;
+	margin: 20px auto;
 	position: relative;
 	text-align:center;
 }
-a.play-icon.popup-with-zoom-anim img:hover {
-	opacity: 0.5;
-	transition:0.5s all;
-	-webkit-transition:0.5s all;
-	-o-transition:0.5s all;
-	-moz-transition:0.5s all;
-	-ms-transition:0.5s all;
-}
-.portfolio-items{
-	text-align:center;
-	margin:0 auto;
-}
-.portfolio-items img{
-	width:100%;
-}
-.portfolio-items h4{
-	margin:1em 0;
-	font-size:25px;
-	color:#a63d56;
-}
-.portfolio-items p{
-	text-align:justify;
-}
-/**
-
-/**
- * Fade-zoom animation for first dialog
+/* Fade-zoom animation for first dialog
  */
 
 /* start state */
@@ -78,11 +44,15 @@ opacity: 0;
 }
 /* Dark overlay, start state */
 .my-mfp-zoom-in.mfp-bg {
-
+opacity: 0;
 -webkit-transition: opacity 0.3s ease-out;
 -moz-transition: opacity 0.3s ease-out;
 -o-transition: opacity 0.3s ease-out;
 transition: opacity 0.3s ease-out;
+}
+/* animate in */
+.my-mfp-zoom-in.mfp-ready.mfp-bg {
+opacity: 0.8;
 }
 /* animate out */
 .my-mfp-zoom-in.mfp-removing.mfp-bg {
@@ -98,8 +68,9 @@ opacity: 0;
   z-index: 1042;
   overflow: hidden;
   position: fixed;
-  background:#fff;
- }
+  background: #0b0b0b;
+  opacity: 0.8;
+  filter: alpha(opacity=80); }
 
 .mfp-wrap {
   top: 0;
@@ -121,9 +92,7 @@ opacity: 0;
   padding: 0 8px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box; 
-  background: #52d0c4 !important;
-}
+  box-sizing: border-box; }
 
 .mfp-container:before {
   content: '';
@@ -209,7 +178,7 @@ button.mfp-arrow {
   overflow: visible;
   cursor: pointer;
   border: 0;
-   background:#000;
+   background:#FFF;
   -webkit-appearance: none;
   display: block;
   padding: 0;
@@ -228,16 +197,17 @@ button::-moz-focus-inner {
   text-decoration: none;
   text-align: center;
   padding: 0 0 18px 10px;
-  color: #000;
+  color: white;
   font-style: normal;
   font-size: 28px;
-  outline:none;	
+  outline:none;
+  font-family: 'Open Sans', sans-serif;		
  }
   .mfp-close:hover, .mfp-close:focus {
     opacity: 1; }
 
 .mfp-close-btn-in .mfp-close {
-  color: #fff; }
+  color: #333333; }
 
 .mfp-image-holder .mfp-close,
 .mfp-iframe-holder .mfp-close {
@@ -247,61 +217,38 @@ button::-moz-focus-inner {
   padding-right: 6px;
   width: 100%; 
 }
-/*----*/
-.login{
-	border-bottom:2px solid #fff;
+.image-top img{
+	width:100%;
 }
-.login input[type="text"] {
-	outline: none;
-	padding:6px ;
-	background: none;
-	width: 93%;
-	border: none;
-	font-size:1.3em;
-	color:#fff;	
+.image-top p{
+	text-align: justify;
+	padding:2% 0;
 }
-.login input[type="submit"] {	
-	width: 26px;
-	height: 26px;
-	background: url(../images/search.png) no-repeat ;
-	padding: 0px 1px;
-	border: none;
-	cursor: pointer;
-	outline: none;
-	vertical-align: middle;
-}
-.search-top p{
-	color:#fff;
-	font-size:1.2em;
-	line-height:1.5em;
-	width:33%;
-	text-align:center;
-	padding: 1em 0;
-}
-@media(max-width:640px){
-.search-top p {
-  width: 45%;
-}
-}
-@media all and (max-width:480px){
-.login input[type="text"] {
-	width: 88%;
-	font-size: 1.4em;
-}
-.search-top p {
-	width: 60%;
-}
-}
-@media all and (max-width:320px){
-.login input[type="text"] {
-	width: 80%;
-	font-size: 1.2em;
-}
-#small-dialog{
-	padding:15px;
-}
-.search-top p {
-	width: 70%;
-	font-size:1em;
-}
-} 
+@media screen and (max-width:800px){
+	#small-dialog,#small-dialog1,#small-dialog2,#small-dialog3,#small-dialog4,#small-dialog5 ,#small-dialog6,#small-dialog7,#small-dialog8,#small-dialog9{
+		max-width: 450px;
+	}
+	}
+@media screen and (max-width:768px){
+	#small-dialog,#small-dialog1,#small-dialog2,#small-dialog3,#small-dialog4,#small-dialog5 ,#small-dialog6,#small-dialog7,#small-dialog8,#small-dialog9{
+		max-width: 400px;
+	}
+	.image-top p {
+		height: 8em;
+		overflow: hidden;
+	}
+	}
+@media screen and (max-width:640px){
+	#small-dialog,#small-dialog1,#small-dialog2,#small-dialog3,#small-dialog4,#small-dialog5 ,#small-dialog6,#small-dialog7,#small-dialog8,#small-dialog9{
+		max-width: 350px;
+	}
+	.image-top p {
+		height: 6em;
+		overflow: hidden;
+	}
+	}
+@media screen and (max-width:320px){
+	#small-dialog,#small-dialog1,#small-dialog2,#small-dialog3,#small-dialog4,#small-dialog5 ,#small-dialog6,#small-dialog7,#small-dialog8,#small-dialog9{
+		max-width: 260px;
+	}
+	}
