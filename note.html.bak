@@ -292,7 +292,7 @@ img {
 </head>
 <body>
 <h1><strong>welcome to my Notes!</strong></h1>
-<h2><a href="spring.html">Spring学习笔记</a></h2>
+<h2><a href="#">Spring学习笔记</a></h2>
 <blockquote>
 <ul>
 <li>IOC:控制反转</li>

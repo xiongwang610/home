@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>note</title>
+<title>spring</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <style type="text/css">
 /* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
@@ -291,44 +291,90 @@ img {
 </style>
 </head>
 <body>
-<h1><strong>welcome to my Notes!</strong></h1>
-<h2><a href="spring.html">Spring学习笔记</a></h2>
+<h1>Spring 学习笔记</h1>
 <blockquote>
+<h2>IOC</h2>
+<h3>加载并初始化bean</h3>
+<ol>
+<li>ApplicationContext:保存Bean对象并在Spring中应用</li>
+<li>BeanFactory提供配置结构和其他个功能，加载初始化Bean</li>
+</ol>
+<h3>Web配置</h3>
+<pre><code>&lt;servlet&gt;
+    &lt;servlet-name&gt;context&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.springframework.web.servlet.ContextLoadServlet&lt;/servlet-class&gt;
+    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+&lt;servlet&gt;
+</code></pre>
+
+<h3>Bean配置项</h3>
 <ul>
-<li>IOC:控制反转</li>
-<li>DI:依赖注入</li>
-<li>AOP:面向接口编程</li>
-<li>Spring AOP API</li>
-<li>Spring事务管理 </li>
+<li>id:唯一标识</li>
+<li>class:实现类(必须配置)</li>
+<li>scope:范围作用域</li>
+<li>constructor or arguments:构造器注入</li>
+<li>properties:参数注入</li>
+<li>Autowring mode:自动装配模式</li>
+<li>lazy-initialization:懒加载模式</li>
+<li>Initialization/destruction:初始化方法或销毁方法</li>
+</ul>
+<h4>代码示例</h4>
+<pre><code>&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot;
+xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop.xsd&quot;&gt;
+&lt;bean id=&quot;唯一标识&quot; class=&quot;具体类&quot; destroy-method=&quot;function&quot;&gt;&lt;/bean&gt;
+&lt;/beans&gt; 
+</code></pre>
+
+<h2>AOP</h2>
+<h3>AOP一些概念</h3>
+<ul>
+<li>Aspect：一个关注点的模块化，这个关注点可能横切多个对象</li>
+<li>JointPoint: 程序执行过程中的某个特定点</li>
+<li>Advice:在切面的某个特定的连接点上执行动作</li>
+<li>Pointcut:匹配连接点的断言，在AOP中通知和一个切入点的表达式关联</li>
+<li>Introduction:在不修改类代码的前提下，为类添加新的方法和属性</li>
+<li>TargetObject:被一个或者多个切面通知的对象</li>
+<li>AOPProxy:AOP框架创建对象，用来实现切面契约</li>
+<li>Weaving:把切面连接到其他的应用程序类型或者对象上，并创建被通知对象，编译时织入，类加载时织入，执行时织入</li>
 </ul>
 </blockquote>
-<h2><a href="#">Hibernate学习笔记</a></h2>
+<h3>Advice</h3>
 <blockquote>
-<ul>
-<li>获取Session对象</li>
-<li>hibernate.cfg.xml配置</li>
-<li>**.hbm.xml配置</li>
-<li>一对多配置与使用</li>
-<li>多对一配置与使用</li>
-<li>多对多配置与使用</li>
-<li>Hibernate缓存的使用</li>
-</ul>
-</blockquote>
-<h2><a href="#">Struts2学习笔记</a></h2>
-<blockquote>
-<ul>
-<li>访问Servlet API</li>
-<li>Action搜索顺序</li>
-<li>动态方法调用</li>
-<li>通配符的使用</li>
-<li>指定多个配置文件</li>
-<li>默认Action</li>
-<li>Struts2后缀</li>
-<li>接收参数</li>
-<li>input 表单输入</li>
-<li>处理结果类型</li>
-<li>Struts2 拦截器</li>
-</ul>
+<ol>
+<li>前置通知(Before Advice)：joint point之前执行但不能阻止连接点前执行</li>
+<li>返回后通知(After returning Advice):joint point <strong>正常</strong>完成后执行的通知</li>
+<li>抛出异常后通知（After throwing Advice):在方法<strong>抛出异常</strong>退出执行的通知</li>
+<li>后通知(After Advice): 某连接点退出时执行<strong>(不论是否正常退出)</strong></li>
+<li>环绕通知(Around Advice):包围一个连接点前后</li>
+</ol>
+<h2>Spring AOP</h2>
+<h3>aspect pointcut advice配置</h3>
+<pre><code>&lt;bean id=&quot;aspect&quot; class=&quot;通知类&quot; /&gt;
+&lt;bean id=&quot;target&quot; class=&quot;目标类&quot; /&gt;
+&lt;aop:config&gt;
+    &lt;aop:aspect id=&quot;Aop&quot; ref=&quot;Aspect&quot;&gt;
+        &lt;aop:pointcut expression=&quot;excution(*包名).*function(..)&quot; id=&quot;pointcut&quot;/&gt;
+        &lt;aop:before method=&quot;指定方法&quot; pointcut-ref=&quot;pointcut&quot;/&gt;
+        &lt;aop:after-returning method=&quot;指定方法&quot; pointcut-ref=&quot;pointcut&quot;/&gt;
+        &lt;aop:after-throwing method=&quot;指定方法&quot; pointcut-ref=&quot;pointcut&quot;/&gt;
+        &lt;aop:after method=&quot;指定方法&quot; pointcut-ref=&quot;pointcut&quot;/&gt;
+        &lt;aop:around method=&quot;指定方法&quot; pointcut-ref=&quot;pointcut&quot;/&gt;
+    &lt;/aop:aspect&gt;
+&lt;/aop:config&gt;
+//使用around时方法第一个参数必须是ProceedingJoint类型
+public Object function(ProceedingJointPoint pjp)    throws Throwable{
+    //before....
+    Object result = pjp.proceed();
+    //after...
+    return result;
+}
+</code></pre>
+
 </blockquote>
 
 </body>

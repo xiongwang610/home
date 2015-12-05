@@ -40,7 +40,7 @@ label{
 	margin: 0 7em;
 }
 .top-menu ul li a{
-	color:#FFFFFF;
+	color:#0000;
 	text-decoration:none;
 	font-size:15px;
 	display:block;
@@ -59,7 +59,7 @@ ul.details li{
 }
 .header-banner{
 	background: url("../images/xiongwang.jpg") no-repeat;
-	min-height: 900px;
+	min-height: 860px;
 	background-size: cover;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
