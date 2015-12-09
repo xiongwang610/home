@@ -292,7 +292,7 @@ img {
 </head>
 <body>
 <h1><strong>welcome to my Notes!</strong></h1>
-<h2><a href="#">Spring学习笔记</a></h2>
+<h2><a href="http://www.baidu.com">Spring学习笔记</a></h2>
 <blockquote>
 <ul>
 <li>IOC:控制反转</li>
@@ -302,7 +302,7 @@ img {
 <li>Spring事务管理 </li>
 </ul>
 </blockquote>
-<h2><a href="#">Hibernate学习笔记</a></h2>
+<h2><a href="http://www.baidu.com">Hibernate学习笔记</a></h2>
 <blockquote>
 <ul>
 <li>获取Session对象</li>
@@ -314,7 +314,7 @@ img {
 <li>Hibernate缓存的使用</li>
 </ul>
 </blockquote>
-<h2><a href="#">Struts2学习笔记</a></h2>
+<h2><a href="http://www.baidu.com">Struts2学习笔记</a></h2>
 <blockquote>
 <ul>
 <li>访问Servlet API</li>
@@ -328,6 +328,16 @@ img {
 <li>input 表单输入</li>
 <li>处理结果类型</li>
 <li>Struts2 拦截器</li>
+</ul>
+</blockquote>
+<h2><a href="http://www.baidu.com">eclipse快捷键</a></h2>
+<blockquote>
+<ul>
+<li>和编辑相关的快捷键</li>
+<li>查看和定位快捷键</li>
+<li>调试快捷键</li>
+<li>常用编辑器快捷键</li>
+<li>其他快捷键</li>
 </ul>
 </blockquote>
 
