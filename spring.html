@@ -375,6 +375,67 @@ public Object function(ProceedingJointPoint pjp)    throws Throwable{
 }
 </code></pre>
 
+<h3>前置通知示例</h3>
+<pre><code>class AspectClass implements MethodBeforeAdvice{
+    public void before(Method m,Object[] a,Object target) throws Throwable{
+        //要执行的通知
+    }
+}
+</code></pre>
+
+<h3>环绕通知</h3>
+<pre><code>//该类实现MethodInterceptor
+public Object invoke(MethodInvocation m) throws Throwable{
+    //前置通知
+    Object obj = m.proceed();
+    //后置通知
+    return obj;
+}
+</code></pre>
+
+<h3>注解实现AOP</h3>
+</blockquote>
+<pre><code>//首先在配置文件中配置
+//&lt;context:component-scan base-package=&quot;扫描该包下的注解&quot;
+/**
+ * 切入点
+ * execution(* *(..))匹配
+ * @annotation(注解类)
+ * 
+ */
+@Pointcut(&quot;@annotation(whut.glxiang.cbim.annotation.Operate)&quot;)
+public void operate(){
+
+}
+/**
+ * 环绕通知
+ * @param point
+ * @return
+ */
+@Around(&quot;operate()&quot;)
+public Object around(ProceedingJoinPoint point){
+    Object object = null;
+    //前置
+    object = point.proceed();
+    //后置   
+    return object;
+}
+</code></pre>
+
+<blockquote>
+<h2>Spring事物</h2>
+<h3>声明式事务管理</h3>
+<pre><code>//配置
+//配置事务管理器
+&lt;bean id=&quot;transactionManager&quot; class=&quot;***.DataSourceTransactionManager&quot;&gt;
+&lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;&lt;/bean&gt;
+//配置业务层代理
+&lt;bean id=&quot;名称&quot; class=&quot;***.TransactionProxyFactoryBean&quot;&gt;
+&lt;property name=&quot;target&quot; ref=&quot;代理目标&quot; /&gt;&lt;/bean&gt;
+//注入事物管理器
+&lt;bean name=&quot;transactionManager&quot; ref=&quot;transactionManager&quot;
+</code></pre>
+
 </blockquote>
 
 </body>
